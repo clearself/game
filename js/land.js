@@ -2,7 +2,7 @@
 	//背景类
 	var Land = window.Land = function(){
 		this.image = game.R.land;
-		this.y = game.canvas.height*.75;
+		this.y = game.canvas.height*0.75;
 		this.w = 336;
 		this.h = 112;
 		this.speed = 1;

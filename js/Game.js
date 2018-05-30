@@ -4,6 +4,7 @@
 		this.ctx = this.canvas.getContext('2d');
 		this.ResourceUrl = params.RUrl;
 		this.fno = 0;
+		this.PipeArr = [];
 		this.init();
 		//读取所有资源
 		var self = this;
@@ -67,15 +68,27 @@
 		this.background =  new Background();
 		//实例化大地
 		this.land = new Land();
+		//实例化管子
+		this.pipe = new Pipe();
+		
 		this.timer = setInterval(function(){
 			self.ctx.clearRect(0,0,self.canvas.width, self.canvas.height);
 			self.fno ++;
 			//背景更新渲染
 			self.background.update();
 			self.background.render();
-			//
+			//大地更新渲染
 			self.land.update();
 			self.land.render();
+			//管子更新渲染
+			for(var i=0; i < self.PipeArr.length; i++){
+				self.PipeArr[i].update();
+				self.PipeArr[i].render();
+			}
+			var arr = [150,300]
+			var num = parseInt(Math.random()*arr.length);
+			self.fno%arr[num] === 0 ? new Pipe():null;
+			
 			//打印贞编号
 			self.ctx.font='16px consolas';
 			self.ctx.textalign = 'left';
